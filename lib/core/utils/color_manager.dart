@@ -92,4 +92,5 @@ class ColorManager {
   static Color taskPurple = const Color.fromRGBO(202, 40, 243, 1);
   static Color taskGreen = const Color.fromRGBO(0, 159, 35, 1);
   static Color taskGreen2 = const Color.fromRGBO(14, 181, 111, 1);
+  static Color primary = Color(0xff129575);
 }

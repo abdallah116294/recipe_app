@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:recipe_app/Features/nav/screen/nav_bar_screen.dart';
 import 'package:recipe_app/Features/splash/screens/splash_screen.dart';
 import 'package:recipe_app/config/routes/app_routes.dart';
 import 'package:recipe_app/core/cach/cach_helper.dart';
@@ -13,9 +14,9 @@ Future<void> main() async {
   bool loginView = CacheHelper.getData(key: 'login_view') ?? false;
   String startWidget(){
     if(splashView==true&&loginView==true){
-      return AppRoutes.recipeScreen;
+      return AppRoutes.navbarScreen;
     }else if(loginView==true){
-      return AppRoutes.recipeScreen;
+      return AppRoutes.navbarScreen;
     }else{
       return AppRoutes.splashScreen;
     }
