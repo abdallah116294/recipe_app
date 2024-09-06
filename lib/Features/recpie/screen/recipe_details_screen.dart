@@ -23,8 +23,13 @@ class _RecipeDetailsScreenState extends State<RecipeDetailsScreen> {
       child: BlocConsumer<RecipeCubit, RecipeState>(
         listener: (context, state) {
           if (state is AddRecipeToFavoriteSuccess) {
-            showMessage(
-                message: 'Add To Favorite Successfully', isError: false);
+            if (state.response == 0) {
+              showMessage(
+                  message: 'You add it Before', isError: true);
+            } else {
+              showMessage(
+                  message: 'Add To Favorite Successfully', isError: false);
+            }
           } else if (state is AddRecipeToFavoriteFailure) {
             showMessage(message: 'Add To Favorite Failed', isError: true);
           }

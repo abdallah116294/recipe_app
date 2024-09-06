@@ -44,6 +44,8 @@ class _RecipeScreenState extends State<RecipeScreen> {
                                       arguments: state.recipes[index]);
                                 },
                                 child: RecipeItemWidget(
+                                  isFavorite: false,
+                                  calories: state.recipes[index].calories!,
                                   imageUrl: state.recipes[index].image!,
                                   recipeName: state.recipes[index].name!,
                                 ),

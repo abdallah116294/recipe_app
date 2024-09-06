@@ -27,14 +27,14 @@ class RecipeCubit extends Cubit<RecipeState> {
   }) async {
     emit(AddRecipeToFavoriteLoading());
     try {
-      await recipeRepo.addRecipeToFavorite(
+final response=   await recipeRepo.addRecipeToFavorite(
         userId: userId,
         recipeId: recipeId,
         recipeName: recipeName,
         recipeImage: recipeImage,
         recipeHeadline: recipeHeadline,
       );
-      emit(AddRecipeToFavoriteSuccess());
+      emit(AddRecipeToFavoriteSuccess(response:response! ));
     } catch (e) {
       emit(AddRecipeToFavoriteFailure());
     }

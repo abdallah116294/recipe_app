@@ -25,7 +25,7 @@ class RecipeRepo {
     }
   }
 
-  Future<void> addRecipeToFavorite({
+  Future<int?> addRecipeToFavorite({
     required int userId,
     required String recipeId,
     required String recipeName,
@@ -35,7 +35,9 @@ class RecipeRepo {
     try {
       final response = await sqlDb.addFavorite(
           userId, recipeId, recipeName, recipeImage, recipeHeadline);
+
      debugPrint("Repo output$response");     
+     return response;
     } catch (e) {
       debugPrint(e.toString());
     }

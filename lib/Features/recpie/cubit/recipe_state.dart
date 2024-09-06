@@ -15,5 +15,8 @@ class GetRecipeSuccess extends RecipeState{
 }
 class GetRecipeFailure extends RecipeState{}
 class AddRecipeToFavoriteLoading extends RecipeState{}
-class AddRecipeToFavoriteSuccess extends RecipeState{}
+class AddRecipeToFavoriteSuccess extends RecipeState{
+  final int response;
+  AddRecipeToFavoriteSuccess({required this.response});
+}
 class AddRecipeToFavoriteFailure extends RecipeState{}

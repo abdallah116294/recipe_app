@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:recipe_app/Features/favoirte/cubit/favorite_cubit.dart';
+import 'package:recipe_app/Features/favoirte/data/repo/favorite_repo.dart';
 import 'package:recipe_app/Features/login/cubit/login_cubit.dart';
 import 'package:recipe_app/Features/login/data/repo/login_repo.dart';
 import 'package:recipe_app/Features/recpie/cubit/recipe_cubit.dart';
@@ -21,6 +23,11 @@ Future<void> init() async {
   sl.registerFactory(() => RecipeCubit(sl()));
   //repo
   sl.registerLazySingleton(() => RecipeRepo(apiConsumer: sl()));
+  //Favorite
+  //cubit
+  sl.registerFactory(() => FavoriteCubit(repo: sl()));
+  //repo
+  sl.registerFactory(()=>FavoriteRepo());
   //config
   sl.registerLazySingleton(() => SqlDb());
   //core

@@ -30,7 +30,6 @@ _onUpgrade(Database db , int oldversion , int newversion ) {
 
 _onCreate(Database db , int version) async {
 
-   // Create users table
     await db.execute('''
       CREATE TABLE "users" (
         "id" INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -38,8 +37,6 @@ _onCreate(Database db , int version) async {
         "password" TEXT NOT NULL
       )
     ''');
-
-    // Create favorites table
 await db.execute('''
   CREATE TABLE "recipe_favorite" (
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -73,17 +70,24 @@ await db.execute('''
     if (result.isNotEmpty) {
       return result.first;
     } else {
-      return null; // Invalid credentials
+      return null; 
     }
   }
-  // Favorites Functions
   Future<int> addFavorite(int userId, String recipeId, String recipeName, String recipeImage, String recipeHeadline) async {
     Database? mydb = await db;
-    int response = await mydb!.rawInsert('''
+  List<Map<String, dynamic>> existingRecipe = await mydb!.rawQuery('''
+    SELECT * FROM recipe_favorite 
+    WHERE userId = ? AND recipeId = ?
+  ''', [userId, recipeId]);
+  if (existingRecipe.isEmpty) {
+    int response = await mydb.rawInsert('''
       INSERT INTO recipe_favorite (userId, recipeId, recipeName, recipeImage, recipeHeadline)
       VALUES (?, ?, ?, ?, ?)
     ''', [userId, recipeId, recipeName, recipeImage, recipeHeadline]);
     return response;
+  } else {
+    return 0;
+  }
   }
 
   Future<List<Map<String, dynamic>>> getUserFavorites(int userId) async {
@@ -94,6 +98,15 @@ await db.execute('''
     ''', [userId]);
     return response;
   }
+  Future<int> deleteFavorite(int userId, String recipeId) async {
+  Database? mydb = await db;
+  int response = await mydb!.rawDelete('''
+    DELETE FROM recipe_favorite 
+    WHERE userId = ? AND recipeId = ?
+  ''', [userId, recipeId]);
+
+  return response; 
+}
 readData(String sql) async {
   Database? mydb = await db ; 
   List<Map> response = await  mydb!.rawQuery(sql);

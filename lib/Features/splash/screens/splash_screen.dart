@@ -53,7 +53,6 @@ class _SplashScreenState extends State<SplashScreen> {
               top: 520,
               right: 30,
               left: 30,
-              //left: 90,
               child: CustomText(
                 text: 'Simple way to find Tasty Recipe',
                 color: Colors.white,
@@ -64,7 +63,6 @@ class _SplashScreenState extends State<SplashScreen> {
               top: 600,
               right: 30,
               left: 30,
-              //left: 90,
               child:CustomElevated(text: 'Start Cooking ', press: (){
                 CacheHelper.saveData(key: 'Splash_view', value: true).then((value){
                   Navigator.pushNamed(context, AppRoutes.loginScreen);
