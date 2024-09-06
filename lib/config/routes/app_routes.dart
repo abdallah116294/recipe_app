@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_app/Features/login/screen/login_screen.dart';
 import 'package:recipe_app/Features/nav/screen/nav_bar_screen.dart';
+import 'package:recipe_app/Features/recpie/data/model/recpi_model.dart';
+import 'package:recipe_app/Features/recpie/screen/recipe_details_screen.dart';
 import 'package:recipe_app/Features/recpie/screen/recipe_screen.dart';
 import 'package:recipe_app/Features/splash/screens/splash_screen.dart';
 import 'package:recipe_app/config/routes/base_routes.dart';
@@ -14,6 +16,7 @@ class AppRoutes {
   static const String recipeScreen = "RecipeScreen";
   static const String navbarScreen = "NavBar";
   static const String uploadBookScreen = "UploadBookScreen";
+  static const String recipeDetailsScreen = "RecipeDetailsScreen";
   static BuildContext currentContext = navigatorKey.currentContext!;
   static Route<void>? onGenerateRoute(RouteSettings settings) {
     final args = settings.arguments;
@@ -25,8 +28,12 @@ class AppRoutes {
         return BaseRoute(page: const LoginScreen());
       case recipeScreen:
         return BaseRoute(page: RecipeScreen());
-      case   navbarScreen:
-      return BaseRoute(page: const NavBar());
+      case navbarScreen:
+        return BaseRoute(page: const NavBar());
+      case   recipeDetailsScreen:
+      return BaseRoute(page: RecipeDetailsScreen(recipeModel: args as  RecipeModel,));
+      default:
+        return null;
     }
   }
 }

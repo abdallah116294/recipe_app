@@ -17,4 +17,27 @@ class RecipeCubit extends Cubit<RecipeState> {
       emit(GetRecipeFailure());
     }
   }
+
+  Future<void> addRecipeToFavorite({
+    required int userId,
+    required String recipeId,
+    required String recipeName,
+    required String recipeImage,
+    required String recipeHeadline,
+  }) async {
+    emit(AddRecipeToFavoriteLoading());
+    try {
+      await recipeRepo.addRecipeToFavorite(
+        userId: userId,
+        recipeId: recipeId,
+        recipeName: recipeName,
+        recipeImage: recipeImage,
+        recipeHeadline: recipeHeadline,
+      );
+      emit(AddRecipeToFavoriteSuccess());
+    } catch (e) {
+      emit(AddRecipeToFavoriteFailure());
+    }
+  }
 }
+

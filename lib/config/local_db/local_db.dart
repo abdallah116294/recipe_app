@@ -77,7 +77,7 @@ await db.execute('''
     }
   }
   // Favorites Functions
-  Future<int> addFavorite(int userId, int recipeId, String recipeName, String recipeImage, String recipeHeadline) async {
+  Future<int> addFavorite(int userId, String recipeId, String recipeName, String recipeImage, String recipeHeadline) async {
     Database? mydb = await db;
     int response = await mydb!.rawInsert('''
       INSERT INTO recipe_favorite (userId, recipeId, recipeName, recipeImage, recipeHeadline)

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipe_app/Features/recpie/cubit/recipe_cubit.dart';
 import 'package:recipe_app/Features/recpie/widget/recipe_item_widget.dart';
+import 'package:recipe_app/config/routes/app_routes.dart';
+import 'package:recipe_app/core/extensions/context_extensions.dart';
 import 'package:recipe_app/injection_container.dart' as di;
 
 class RecipeScreen extends StatefulWidget {
@@ -37,8 +39,9 @@ class _RecipeScreenState extends State<RecipeScreen> {
                                     childAspectRatio: .78),
                             itemBuilder: (context, index) {
                               return GestureDetector(
-                                onTap: (){
-                                  
+                                onTap: () {
+                                  context.pushName(AppRoutes.recipeDetailsScreen,
+                                      arguments: state.recipes[index]);
                                 },
                                 child: RecipeItemWidget(
                                   imageUrl: state.recipes[index].image!,

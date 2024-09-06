@@ -14,3 +14,6 @@ class GetRecipeSuccess extends RecipeState{
   const GetRecipeSuccess(this.recipes);
 }
 class GetRecipeFailure extends RecipeState{}
+class AddRecipeToFavoriteLoading extends RecipeState{}
+class AddRecipeToFavoriteSuccess extends RecipeState{}
+class AddRecipeToFavoriteFailure extends RecipeState{}
