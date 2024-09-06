@@ -4,6 +4,8 @@ import 'package:recipe_app/Features/recpie/cubit/recipe_cubit.dart';
 import 'package:recipe_app/Features/recpie/widget/recipe_item_widget.dart';
 import 'package:recipe_app/config/routes/app_routes.dart';
 import 'package:recipe_app/core/extensions/context_extensions.dart';
+import 'package:recipe_app/core/utils/color_manager.dart';
+import 'package:recipe_app/core/widgets/custom_text.dart';
 import 'package:recipe_app/injection_container.dart' as di;
 
 class RecipeScreen extends StatefulWidget {
@@ -27,6 +29,10 @@ class _RecipeScreenState extends State<RecipeScreen> {
                     padding: const EdgeInsets.all(20.0),
                     child: Column(
                       children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 8),
+                          child: Align(alignment: Alignment.topLeft,child: CustomText(text: 'Welcome Back', color: ColorManager.black, fontWeight: FontWeight.bold, fontSize: 30)),
+                        ),
                         GridView.builder(
                             itemCount: state.recipes.length,
                             shrinkWrap: true,

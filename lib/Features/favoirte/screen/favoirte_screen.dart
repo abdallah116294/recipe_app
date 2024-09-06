@@ -34,10 +34,14 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                     padding: const EdgeInsets.all(20.0),
                     child: Column(
                       children: [
+                           Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 8),
+                          child: Align(alignment: Alignment.topLeft,child: CustomText(text: 'Favorite Recipes', color: ColorManager.black, fontWeight: FontWeight.bold, fontSize: 30)),
+                        ),
                         state.favorites.isEmpty
                             ? Padding(
                                 padding:
-                                    const EdgeInsets.symmetric(vertical: 400),
+                                    const EdgeInsets.symmetric(vertical: 350),
                                 child: CustomText(
                                     text: 'You don\'t add Recipe to Favorite ',
                                     color: ColorManager.black,
