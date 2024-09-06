@@ -32,7 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
             CacheHelper.saveData(key: 'login_view', value: true).then((value) {
               showMessage(message: 'Login Success', isError: false);
             });
-            context.pushName(AppRoutes.recipeScreen);
+            context.pushName(AppRoutes.navbarScreen);
           } else if (state is LoginUserError) {
             showMessage(message: 'Login Error', isError: true);
             //ScaffoldMessenger.of(context).showSnackBar(SnackBar(content:Text('Success')));
