@@ -1,5 +1,6 @@
 # Recipe App        
-
+# App Flow
+![App Flow](https://drive.google.com/uc?export=view&id=1Q5C8QDUfFAsRqzBM8kTJWdInd1Lh2v7M)
 ## Splash Screen
 ![Splash Screen](https://drive.google.com/uc?export=view&id=1-6mIJRg3UHr_0gh6nDQbdJ3cQ30Kj1iS)
 
